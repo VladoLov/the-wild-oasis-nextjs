@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  swcMinify: true,
-  compiler: {
-    styledComponents: true,
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "yrrlghbkzlrmkfxcchlc.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/cabin-images/**",
+      },
+    ],
   },
 };
 
