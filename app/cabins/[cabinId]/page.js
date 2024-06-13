@@ -1,5 +1,8 @@
 import CabinView from "@/app/_components/CabinView";
+import Reservation from "@/app/_components/Reservation";
+import Spinner from "@/app/_components/Spinner";
 import { getCabin, getCabins } from "@/app/_lib/data-service";
+import { Suspense } from "react";
 
 /* export const metadata = {
   title: "Cabin",
@@ -20,9 +23,18 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const cabin = await getCabin(params.cabinId);
+  /* const settings = await getSettings();
+  const bookedDates = await getBookedDatesByCabinId(params.cabinId); */
+
   return (
     <div className="max-w-6xl mx-auto mt-8">
       <CabinView cabin={cabin} />
+      <div className="text-5xl font-semibold text-center mb-10 text-accent-400">
+        <h2>Reserve {cabin.name} today. Pay on arrival.</h2>
+        <Suspense fallback={<Spinner />}>
+          <Reservation cabin={cabin} />
+        </Suspense>
+      </div>
     </div>
   );
 }
