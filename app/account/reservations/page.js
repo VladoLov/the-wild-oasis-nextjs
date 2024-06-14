@@ -5,7 +5,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <h1>reservations</h1>
+      <h2>reservations</h2>
     </>
   );
 }
